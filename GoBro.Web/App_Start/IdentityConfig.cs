@@ -27,7 +27,7 @@ namespace GoBro.Web
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<User>(manager)
             {
-                AllowOnlyAlphanumericUserNames = false,
+                AllowOnlyAlphanumericUserNames = true,
                 RequireUniqueEmail = true
             };
 

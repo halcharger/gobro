@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using GoBro.Web.Models;
 using AdaptiveSoftware.AspNetIdentity.AzureTableStorage;
+using NExtensions;
 
 namespace GoBro.Web.Controllers
 {
@@ -72,9 +73,13 @@ namespace GoBro.Web.Controllers
                 return View(model);
             }
 
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            if (model.EmailUsername.IsEmailAddress())
+            {
+                var user = await UserManager.FindByEmailAsync(model.EmailUsername);
+                model.EmailUsername = user.UserName;
+            }
+
+            var result = await SignInManager.PasswordSignInAsync(model.EmailUsername, model.Password, model.RememberMe, shouldLockout: true);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -155,7 +160,7 @@ namespace GoBro.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email };
+                var user = new User { UserName = model.Username, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
