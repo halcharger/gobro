@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace GoBro.Core.QueryHandler
 {
-    public class LatestVideoQueryHandler : IRequestHandler<LatestVideosQuery, IEnumerable<Video>>
+    public class LatestVideoQueryHandler : IAsyncRequestHandler<LatestVideosQuery, IEnumerable<Video>>
     {
-        public IEnumerable<Video> Handle(LatestVideosQuery message)
+        public Task<IEnumerable<Video>> Handle(LatestVideosQuery message)
         {
-            return new Video[] { };
+            return Task.FromResult(Enumerable.Empty<Video>());
         }
     }
 }

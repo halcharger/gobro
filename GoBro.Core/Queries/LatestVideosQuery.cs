@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GoBro.Core.Queries
 {
-    public class LatestVideosQuery : IRequest<IEnumerable<Video>>
+    public class LatestVideosQuery : IAsyncRequest<IEnumerable<Video>>
     {
     }
 }

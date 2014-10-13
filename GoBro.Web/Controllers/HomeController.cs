@@ -3,6 +3,7 @@ using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -17,9 +18,9 @@ namespace GoBro.Web.Controllers
             this.mediator = mediator;
         }
 
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            var latestVideos = mediator.Send(new LatestVideosQuery());
+            var latestVideos = await mediator.SendAsync(new LatestVideosQuery());
             return View();
         }
 
