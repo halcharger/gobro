@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoBro.Web", "GoBro.Web\GoBr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdaptiveSoftware.AspNetIdentity.AzureTableStorage", "AdaptiveSoftware.AspNetIdentity.AzureTableStorage\AdaptiveSoftware.AspNetIdentity.AzureTableStorage.csproj", "{911E9A01-9D81-4A8D-8CAC-BC2A0F9F0B4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoBro.Core", "GoBro.Core\GoBro.Core.csproj", "{F3D957EA-0925-4290-A6CC-5208F97D9402}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{911E9A01-9D81-4A8D-8CAC-BC2A0F9F0B4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{911E9A01-9D81-4A8D-8CAC-BC2A0F9F0B4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{911E9A01-9D81-4A8D-8CAC-BC2A0F9F0B4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3D957EA-0925-4290-A6CC-5208F97D9402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3D957EA-0925-4290-A6CC-5208F97D9402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3D957EA-0925-4290-A6CC-5208F97D9402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3D957EA-0925-4290-A6CC-5208F97D9402}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
