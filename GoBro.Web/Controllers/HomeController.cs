@@ -1,4 +1,5 @@
 ﻿using GoBro.Core.Queries;
+using GoBro.Web.Models;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,8 @@ namespace GoBro.Web.Controllers
         public async Task<ActionResult> Index()
         {
             var latestVideos = await mediator.SendAsync(new LatestVideosQuery());
-            return View();
+            
+            return View(new LatestVideosViewModel(latestVideos.MapTo<VideoThumbnailViewModel>()));
         }
     }
 }
