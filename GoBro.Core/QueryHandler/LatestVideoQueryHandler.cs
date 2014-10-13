@@ -13,7 +13,12 @@ namespace GoBro.Core.QueryHandler
     {
         public Task<IEnumerable<Video>> Handle(LatestVideosQuery message)
         {
-            return Task.FromResult(Enumerable.Empty<Video>());
+            var result = new[]{
+                new Video{Title="title1"}, 
+                new Video{Title="title2"}
+            };
+
+            return Task.FromResult(result.AsEnumerable());
         }
     }
 }
