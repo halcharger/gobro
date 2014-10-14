@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GoBro.Core.Commands;
 using GoBro.Core.Model;
 using GoBro.Web.Models;
 using System;
@@ -14,6 +15,7 @@ namespace GoBro.Web
         {
             Mapper.Initialize(cfg => {
                 cfg.CreateMap<Video, VideoThumbnailViewModel>();
+                cfg.CreateMap<UploadVideoModel, UploadVideoCommand>();
             });
 
             Mapper.AssertConfigurationIsValid();
@@ -22,6 +24,11 @@ namespace GoBro.Web
         public static List<T> MapTo<T>(this IEnumerable<object> input)
         {
             return input.Select(Mapper.Map<T>).ToList();
+        }
+
+        public static T MapTo<T>(this object input)
+        {
+            return Mapper.Map<T>(input);
         }
     }
 }

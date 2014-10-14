@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using GoBro.Core.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace GoBro.Core.Autofac
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterAssemblyTypes(typeof (CoreModule).Assembly).AsImplementedInterfaces();
+
+            builder.RegisterType<GoBroAzureTables>();
         }
     }
 }

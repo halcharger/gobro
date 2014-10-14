@@ -15,5 +15,12 @@ namespace GoBro.Core.Model
         public string YoutubeLink { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+
+        public void SetPartionAndRowKeys()
+        {
+            PartitionKey = Id;
+            RowKey = Id;
+        }
+
     }
 }
