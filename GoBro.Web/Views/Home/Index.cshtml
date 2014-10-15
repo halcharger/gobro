@@ -10,7 +10,7 @@
     @foreach (var vid in Model.Videos)
     {
         <div class="col-md-4">
-            @vid.Title
+            @Html.Partial("_VideoThumbnail", vid)
         </div>
     }
 </div>

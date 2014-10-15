@@ -1,4 +1,4 @@
-﻿using GoBro.Core.Model;
+﻿using GoBro.Core.Models;
 using MediatR;
 using System;
 using System.Collections.Generic;

@@ -5,9 +5,10 @@ using System.Web;
 
 namespace GoBro.Web.Models
 {
-    public class UploadVideoModel
+    public class UploadVideoBindingModel
     {
         public string Title { get; set; }
         public string Description { get; set; }
+        public string YoutubeLink { get; set; }
     }
 }

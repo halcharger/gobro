@@ -1,6 +1,6 @@
 ﻿using GoBro.Core.Commands;
 using GoBro.Core.Data;
-using GoBro.Core.Model;
+using GoBro.Core.Models;
 using MediatR;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
@@ -28,6 +28,7 @@ namespace GoBro.Core.CommandHandlers
             vid.Title = message.Title;
             vid.Description = message.Description;
             vid.SetPartionAndRowKeys();
+            vid.YoutubeLink = message.YoutubeLink;
 
             await tables.InsertAsync(vid, GoBroAzureTables.VideosTableName);
 

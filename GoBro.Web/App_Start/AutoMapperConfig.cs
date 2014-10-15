@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using GoBro.Core.Commands;
-using GoBro.Core.Model;
+using GoBro.Core.Models;
 using GoBro.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace GoBro.Web
         {
             Mapper.Initialize(cfg => {
                 cfg.CreateMap<Video, VideoThumbnailViewModel>();
-                cfg.CreateMap<UploadVideoModel, UploadVideoCommand>();
+                cfg.CreateMap<UploadVideoBindingModel, UploadVideoCommand>();
             });
 
             Mapper.AssertConfigurationIsValid();

@@ -26,7 +26,7 @@ namespace GoBro.Web.Controllers
         }
 
         [HttpPost, Authorize]
-        public async Task<ActionResult> NewVideo(UploadVideoModel model)
+        public async Task<ActionResult> NewVideo(UploadVideoBindingModel model)
         {
             var result = await mediator.SendAsync(model.MapTo<UploadVideoCommand>());
             return new RedirectResult("/");

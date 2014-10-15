@@ -1,5 +1,5 @@
 ﻿using GoBro.Core.Data;
-using GoBro.Core.Model;
+using GoBro.Core.Models;
 using GoBro.Core.Queries;
 using MediatR;
 using Microsoft.WindowsAzure.Storage.Table;

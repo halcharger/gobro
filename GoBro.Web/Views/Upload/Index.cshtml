@@ -1,4 +1,4 @@
-﻿@model GoBro.Web.Models.UploadVideoModel
+﻿@model GoBro.Web.Models.UploadVideoBindingModel
 <h3>Upload a new video to GoBro</h3>
 <div class="row">
     <div class="col-md-8">
@@ -24,8 +24,15 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    @Html.LabelFor(m => m.YoutubeLink, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.YoutubeLink, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.YoutubeLink, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-default" />
+                        <input type="submit" value="Upload" class="btn btn-default" />
                     </div>
                 </div>
             }

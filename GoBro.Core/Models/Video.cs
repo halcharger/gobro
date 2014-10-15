@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GoBro.Core.Model
+namespace GoBro.Core.Models
 {
     public class Video : TableEntity
     {
