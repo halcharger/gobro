@@ -11,6 +11,6 @@ namespace GoBro.Core.Commands
     {
         public string Title { get; set; }
         public string Description { get; set; }
-        public string YoutubeLink { get; set; }
+        public string YoutubeId { get; set; }
     }
 }

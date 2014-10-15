@@ -28,7 +28,7 @@ namespace GoBro.Core.CommandHandlers
             vid.Title = message.Title;
             vid.Description = message.Description;
             vid.SetPartionAndRowKeys();
-            vid.YoutubeLink = message.YoutubeLink;
+            vid.YoutubeId = message.YoutubeId;
 
             await tables.InsertAsync(vid, GoBroAzureTables.VideosTableName);
 

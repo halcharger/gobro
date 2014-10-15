@@ -8,14 +8,8 @@ namespace GoBro.Web.Models
 {
     public class VideoViewModel
     {
-        public string YoutubeLink { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-
-        public string YoutubeId { 
-            get {
-                return YoutubeLink.HasValue() ? HttpUtility.ParseQueryString(new Uri(YoutubeLink).Query).Get("v") : string.Empty;
-            } 
-        }
+        public string YoutubeId { get; set; }
     }
 }
