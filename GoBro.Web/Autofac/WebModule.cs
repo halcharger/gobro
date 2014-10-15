@@ -16,6 +16,8 @@ namespace GoBro.Web.Autofac
             // Register MVC controllers.
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
+            builder.RegisterAssemblyTypes(typeof(MvcApplication).Assembly).AsImplementedInterfaces();
+
             //Register MediatR
             builder.RegisterSource(new ContravariantRegistrationSource());
             builder.RegisterAssemblyTypes(typeof(IMediator).Assembly).AsImplementedInterfaces();

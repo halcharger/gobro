@@ -15,7 +15,8 @@ namespace GoBro.Web
         {
             Mapper.Initialize(cfg => {
                 cfg.CreateMap<Video, VideoThumbnailViewModel>();
-                cfg.CreateMap<UploadVideoBindingModel, UploadVideoCommand>();
+                cfg.CreateMap<UploadVideoBindingModel, UploadVideoCommand>()
+                    .ForMember(dest => dest.Username, opt => opt.Ignore());
                 cfg.CreateMap<Video, VideoViewModel>();
             });
 

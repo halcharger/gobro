@@ -1,4 +1,5 @@
 ﻿using GoBro.Core.Commands;
+using GoBro.Web.Infrastructure;
 using GoBro.Web.Models;
 using MediatR;
 using System;
@@ -13,10 +14,12 @@ namespace GoBro.Web.Controllers
     public class UploadController : Controller
     {
         private readonly IMediator mediator;
+        private readonly IUserProvider userProvider;
 
-        public UploadController(IMediator mediator)
+        public UploadController(IMediator mediator, IUserProvider userProvider)
         {
             this.mediator = mediator;
+            this.userProvider = userProvider;
         }
 
         [HttpGet, Authorize]
@@ -28,7 +31,10 @@ namespace GoBro.Web.Controllers
         [HttpPost, Authorize]
         public async Task<ActionResult> NewVideo(UploadVideoBindingModel model)
         {
-            var result = await mediator.SendAsync(model.MapTo<UploadVideoCommand>());
+            var command = model.MapTo<UploadVideoCommand>();
+            command.Username = userProvider.Username;
+
+            var result = await mediator.SendAsync(command);
             return new RedirectResult("/");
         }
     }

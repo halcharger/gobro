@@ -27,8 +27,10 @@ namespace GoBro.Core.CommandHandlers
             vid.Id = Guid.NewGuid().ToString();
             vid.Title = message.Title;
             vid.Description = message.Description;
-            vid.SetPartionAndRowKeys();
             vid.YoutubeId = message.YoutubeId;
+            vid.Username = message.Username;
+
+            vid.SetPartionAndRowKeys();
 
             await tables.InsertAsync(vid, GoBroAzureTables.VideosTableName);
 
