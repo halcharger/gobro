@@ -23,6 +23,7 @@ namespace GoBro.Core.QueryHandler
         {
             return Task.Factory.StartNew(() =>
             {
+                //TODO: fix this .Take(10), will need to page the results
                 var query = new TableQuery<Video>().Take(10);
                 return tables.VideosTable.ExecuteQuery(query);
             });
