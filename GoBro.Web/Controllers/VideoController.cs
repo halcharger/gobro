@@ -11,17 +11,17 @@ using System.Web.Mvc;
 
 namespace GoBro.Web.Controllers
 {
-    public class ShowController : Controller
+    public class VideoController : Controller
     {
         private readonly IMediator mediator;
 
-        public ShowController(IMediator mediator)
+        public VideoController(IMediator mediator)
         {
             this.mediator = mediator;
         }
 
-        // GET: Show
-        public async Task<ActionResult> Index(string id)
+        [Route("video/{id}")]
+        public async Task<ViewResult> View(string id)
         {
             var video = await mediator.SendAsync<Video>(new GetVideoQuery { Id = id });
             return View(video.MapTo<VideoViewModel>());
