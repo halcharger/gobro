@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NExtensions;
 
 namespace GoBro.Core.Models
 {
@@ -17,7 +18,10 @@ namespace GoBro.Core.Models
 
         public void SetPartionAndRowKeys()
         {
-            PartitionKey = Id;
+            Username.ThrowIfNullOrEmpty("Username");
+            Id.ThrowIfNullOrEmpty("Id");
+
+            PartitionKey = Username;
             RowKey = Id;
         }
 

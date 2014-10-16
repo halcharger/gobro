@@ -12,6 +12,8 @@ namespace GoBro.Core.Data
     public class GoBroAzureTables
     {
         public const string VideosTableName = "videos";
+        public const string PartitionKeyFieldName = "PartitionKey";
+        public const string RowKeyFieldName = "RowKey";
 
         private readonly CloudTable videosTable;
 
