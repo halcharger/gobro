@@ -10,16 +10,19 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using NExtensions;
+using GoBro.Web.Infrastructure;
 
 namespace GoBro.Web.Controllers
 {
     public class VideoController : Controller
     {
         private readonly IMediator mediator;
+        private readonly IUserProvider userProvider;
 
-        public VideoController(IMediator mediator)
+        public VideoController(IMediator mediator, IUserProvider userProvider)
         {
             this.mediator = mediator;
+            this.userProvider = userProvider;
         }
 
         [HttpGet]
@@ -32,15 +35,19 @@ namespace GoBro.Web.Controllers
 
         [HttpPost]
         [Authorize]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         [Route("{username}/delete/{id}")]
-        public async Task<ActionResult> Delete(string username, string id)
+        public async Task<JsonResult> Delete(string username, string id)
         {
-            //confirm the logged on user is deleteing their own videos
-
-
-            await mediator.SendAsync(new DeleteVideoCommand { Id = id });
-            return Redirect("/{0}".FormatWith(username));
+            try
+            {
+                var result = await mediator.SendAsync(new DeleteVideoCommand { Id = id, VideoUsername = username, LoggedOnUsername = userProvider.Username });
+                return new JsonResult { Data = result };
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult { Data = ex.Message };
+            }
         }
     }
 }

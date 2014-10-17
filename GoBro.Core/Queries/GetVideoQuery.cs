@@ -10,6 +10,7 @@ namespace GoBro.Core.Queries
 {
     public class GetVideoQuery : IAsyncRequest<Video>
     {
+        public string Username { get; set; }
         public string Id { get; set; }
     }
 }

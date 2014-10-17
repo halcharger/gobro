@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GoBro.Core.CommandHandlers
 {
-    public class DeleteVideoCommandHandler : AsyncRequestHandler<DeleteVideoCommand>
+    public class DeleteVideoCommandHandler : IAsyncRequestHandler<DeleteVideoCommand, string>
     {
         private readonly IWriteToAzureTables writeService;
         private readonly IMediator mediatr;
@@ -21,10 +21,15 @@ namespace GoBro.Core.CommandHandlers
             this.mediatr = mediatr;
         }
 
-        protected override async Task HandleCore(DeleteVideoCommand message)
+        public async Task<string> Handle(DeleteVideoCommand message)
         {
-            var vid = await mediatr.SendAsync(new GetVideoQuery{Id = message.Id});
+            var vid = await mediatr.SendAsync(new GetVideoQuery { Username=message.VideoUsername, Id = message.Id });
+
+            if (vid.Username != message.LoggedOnUsername)
+                return "Video deletion failed: You cannot delete this video as you are not the user who uploaded it.";
+
             await writeService.DeleteAsync(vid, GoBroAzureTables.VideosTableName);
+            return "SUCCESS";
         }
     }
 }

@@ -22,7 +22,7 @@ namespace GoBro.Core.QueryHandler
 
         public async Task<Video> Handle(GetVideoQuery message)
         {
-            var result = await tables.VideosTable.ExecuteAsync(TableOperation.Retrieve<Video>(message.Id, message.Id));
+            var result = await tables.VideosTable.ExecuteAsync(TableOperation.Retrieve<Video>(message.Username, message.Id));
             return (Video)result.Result;
         }
     }
