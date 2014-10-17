@@ -14,5 +14,6 @@ namespace GoBro.Web.Models
 
         public string Username { get; set; }
         public IEnumerable<VideoThumbnailViewModel> Videos { get; set; }
+        public bool CanManage { get; set; }
     }
 }

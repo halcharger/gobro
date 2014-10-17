@@ -3,11 +3,14 @@
 <div class="videoThumbnailContainer" id="video_@Model.Id">
     <div>
         <span class="pull-left"><h4>@Model.Title</h4></span>
-        <span class="pull-right">
-            <a class="btn btn-danger btn-xs" name="confirmDeleteLink" data-videoId="@Model.Id" href="#">
-                <i class="fa fa-trash-o fa-lg"></i>
-            </a>
-        </span>
+        @if (Model.CanManage)
+        {
+            <span class="pull-right">
+                <a class="btn btn-danger btn-xs" name="confirmDeleteLink" data-videoid="@Model.Id" href="#">
+                    <i class="fa fa-trash-o fa-lg"></i>
+                </a>
+            </span>
+        }
     </div>
     <div><a href="/video/@Model.Id"><img src="http://img.youtube.com/vi/@Model.YoutubeId/0.jpg" /></a></div>
 </div>

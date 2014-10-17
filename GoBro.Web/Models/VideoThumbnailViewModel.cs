@@ -13,5 +13,6 @@ namespace GoBro.Web.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public string YoutubeId { get; set; }
+        public bool CanManage { get; set; }
     }
 }

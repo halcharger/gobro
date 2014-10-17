@@ -14,7 +14,8 @@ namespace GoBro.Web
         public static void RegisterMappings()
         {
             Mapper.Initialize(cfg => {
-                cfg.CreateMap<Video, VideoThumbnailViewModel>();
+                cfg.CreateMap<Video, VideoThumbnailViewModel>()
+                    .ForMember(dest => dest.CanManage, opt => opt.Ignore());
                 cfg.CreateMap<UploadVideoBindingModel, UploadVideoCommand>()
                     .ForMember(dest => dest.Username, opt => opt.Ignore());
                 cfg.CreateMap<Video, VideoViewModel>();
@@ -23,9 +24,15 @@ namespace GoBro.Web
             Mapper.AssertConfigurationIsValid();
         }
 
-        public static List<T> MapTo<T>(this IEnumerable<object> input)
+        public static List<T> MapTo<T>(this IEnumerable<object> input, Action<T> postMappingRoutine = null)
         {
-            return input.Select(Mapper.Map<T>).ToList();
+            var results = input.Select(Mapper.Map<T>).ToList();
+
+            if (postMappingRoutine == null)
+                return results;
+
+            results.ForEach(postMappingRoutine);
+            return results;
         }
 
         public static T MapTo<T>(this object input)
