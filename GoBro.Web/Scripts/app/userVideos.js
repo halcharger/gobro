@@ -37,7 +37,7 @@ function deleteVideo(videoId, username) {
             }
         })
         .fail(function (data) {
-            toastr.error('Failed sending request to delete video: ' + data);
+            toastr.error('Failed sending request to delete video: ' + data.statusText);
         })
         .always(function () {
             $('#confirmDeleteModal').modal('hide');

@@ -35,7 +35,6 @@ namespace GoBro.Web.Controllers
 
         [HttpPost]
         [Authorize]
-        //[ValidateAntiForgeryToken]
         [Route("{username}/delete/{id}")]
         public async Task<JsonResult> Delete(string username, string id)
         {
