@@ -88,7 +88,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autofac\CoreModule.cs" />
+    <Compile Include="CommandHandlers\DeleteVideoCommandHandler.cs" />
     <Compile Include="CommandHandlers\UploadVideoCommandHandler.cs" />
+    <Compile Include="Commands\DeleteVideoCommand.cs" />
     <Compile Include="Commands\UploadVideoCommand.cs" />
     <Compile Include="Commands\UploadVideoResult.cs" />
     <Compile Include="Data\AzureTablesWriteService.cs" />

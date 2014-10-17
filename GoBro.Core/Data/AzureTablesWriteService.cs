@@ -23,5 +23,12 @@ namespace GoBro.Core.Data
             var insertOperation = TableOperation.Insert(entity);
             return await tables.VideosTable.ExecuteAsync(insertOperation);
         }
+
+
+        public async Task<TableResult> DeleteAsync<T>(T entity, string tableName) where T : TableEntity
+        {
+            var deleteOperation = TableOperation.Delete(entity);
+            return await tables.VideosTable.ExecuteAsync(deleteOperation);
+        }
     }
 }

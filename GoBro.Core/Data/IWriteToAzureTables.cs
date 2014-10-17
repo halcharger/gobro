@@ -10,5 +10,6 @@ namespace GoBro.Core.Data
     public interface IWriteToAzureTables
     {
         Task<TableResult> InsertAsync<T>(T entity, string tableName) where T : TableEntity;
+        Task<TableResult> DeleteAsync<T>(T entity, string tableName) where T : TableEntity;
     }
 }
