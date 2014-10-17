@@ -25,17 +25,19 @@ function confirmDelete(videoId) {
 
 function deleteVideo(videoId, username) {
     var postUrl = '/' + username + '/delete/' + videoId;
+    toastr.options = {positionClass : 'toast-bottom-right'};
     var jxhr = $.post(postUrl)
         .done(function (data) {
             if (data === 'SUCCESS') {
                 $('#video_' + videoId).remove();
+                toastr.success('Video successfully deleted.', 'SUCCESS');
             }
             else {
-                alert('Error encountered deleting video: ' + data);
+                toastr.error('There was an error trying to delete the video: ' + data, 'Delete failed');
             }
         })
         .fail(function (data) {
-            alert("Failed sending request to delete video: " + data);
+            toastr.error('Failed sending request to delete video: ' + data);
         })
         .always(function () {
             $('#confirmDeleteModal').modal('hide');
