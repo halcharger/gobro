@@ -1,6 +1,7 @@
 ﻿@model GoBro.Web.Models.VideoThumbnailViewModel
 
-<h5>@Model.Title</h5>
-<div>uploaded by: <a href="/user/@Model.Username">@Model.Username</a></div>
-<div><a href="/video/@Model.Id"><img src="http://img.youtube.com/vi/@Model.YoutubeId/0.jpg" width="300" /></a></div>
-
+<div class="videoThumbnailContainer">
+    <h4>@Model.Title</h4>
+    <div>uploaded by: <a href="/user/@Model.Username">@Model.Username</a></div>
+    <div><a href="/video/@Model.Id"><img src="http://img.youtube.com/vi/@Model.YoutubeId/0.jpg" width="300" /></a></div>
+</div>

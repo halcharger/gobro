@@ -2,3 +2,8 @@
   min-height: 2000px;
   padding-top: 70px;
 }
+
+.videoThumbnailContainer, .videoThumbnailContainer img{
+    width:300px;
+    margin:10px;
+}

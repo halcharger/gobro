@@ -1,9 +1,13 @@
 ﻿@model GoBro.Web.Models.VideoThumbnailViewModel
 
-@Html.Partial("_VideoThumbnail", Model)
-
-<div class="pull-right">
-    <a class="btn btn-danger" href="#">
-        <i class="fa fa-trash-o fa-lg"></i>
-    </a>
+<div class="videoThumbnailContainer">
+    <div>
+        <span class="pull-left"><h4>@Model.Title</h4></span>
+        <span class="pull-right">
+            <a class="btn btn-danger btn-xs" href="#">
+                <i class="fa fa-trash-o fa-lg"></i>
+            </a>
+        </span>
+    </div>
+    <div><a href="/video/@Model.Id"><img src="http://img.youtube.com/vi/@Model.YoutubeId/0.jpg" /></a></div>
 </div>
