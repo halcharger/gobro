@@ -1,12 +1,9 @@
 ﻿using GoBro.Core.Queries;
 using GoBro.Web.Models;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
+using StackExchange.Profiling;
 
 namespace GoBro.Web.Controllers
 {
@@ -21,9 +18,13 @@ namespace GoBro.Web.Controllers
 
         public async Task<ActionResult> Index()
         {
-            var latestVideos = await mediator.SendAsync(new LatestVideosQuery());
-            
-            return View(new LatestVideosViewModel(latestVideos.MapTo<VideoThumbnailViewModel>()));
+            var profiler = MiniProfiler.Current;
+            using (profiler.Step("HomeControllerIndexMethod"))
+            {
+                var latestVideos = await mediator.SendAsync(new LatestVideosQuery());
+
+                return View(new LatestVideosViewModel(latestVideos.MapTo<VideoThumbnailViewModel>()));
+            }
         }
     }
 }
