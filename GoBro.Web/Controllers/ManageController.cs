@@ -1,13 +1,11 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using AdaptiveSystems.AspNetIdentity.AzureTableStorage;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using GoBro.Web.Models;
-using AdaptiveSoftware.AspNetIdentity.AzureTableStorage;
 
 namespace GoBro.Web.Controllers
 {
